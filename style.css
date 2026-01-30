@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= ROOT COLORS ================= */
+:root {
+  --bg-dark: #020617;
+  --neon-green: #22c55e;
+  --neon-green-light: #4ade80;
+  --neon-red: #ef4444;
+  --text-light: #e5e7eb;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --shadow-color: rgba(34, 197, 94, 0.25);
+}
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #020617, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Orbitron", sans-serif;
+  color: var(--text-light);
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.level-select {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.level-select select {
+  height: 1.5rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  color: var(--text-light);
+  background: transparent;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.level-select option {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+.score {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.board {
+  width: 500px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--bg-dark);
+  border-radius: 0.6rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  box-shadow: 0 0 40px var(--shadow-color);
+  overflow: hidden;
+  outline: none;
+}
+.board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: calc(100% / 20) calc(100% / 20);
+  pointer-events: none;
+}
+.snake {
+  background-color: var(--neon-green);
+  border-radius: 3px;
+  box-shadow: 0 0 8px var(--neon-green);
+}
+#snake-head0 {
+  background-color: var(--neon-green-light);
+  box-shadow: 0 0 12px var(--neon-green-light);
+}
+.food {
+  background-color: var(--neon-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon-red);
+}
+.btns {
+  width: 500px;
+  display: flex;
+  gap: 1rem;
+}
+.btn {
+  flex: 1;
+  padding: 0.7rem 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  background: var(--neon-green);
+  color: var(--bg-dark);
+}
+
+/* ================ MEDIA QUERIES ================= */
+
+@media (max-width: 1200px) {
+  .board,
+  .btns {
+    width: 440px;
+  }
+}
+
+/* --------- 1024px --------- */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .board,
+  .btns {
+    width: 400px;
+  }
+}
+
+/* Mobile Controls */
+.control-btns {
+  display: none;
+  text-align: center;
+}
+.ctrl-btn {
+  padding: 0.5rem 1.3rem;
+  font-size: 0.5rem;
+  font-weight: bold;
+  color: var(--neon-green);
+  background: transparent;
+  border: 2px solid var(--neon-green);
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--shadow-color);
+  cursor: pointer;
+}
+.ctrl-btn:active {
+  background: var(--neon-green-light);
+}
+.middle {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .control-btns {
+    display: block;
+  }
+}
+
+/* --------- 768px (Tablet) --------- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  .board,
+  .btns {
+    width: 360px;
+  }
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+}
+
+/* --------- 425px (Mobile L) --------- */
+@media (max-width: 425px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .score {
+    font-size: 0.8rem;
+  }
+  .level-select select,
+  .level-select option {
+    font-size: 0.8rem;
+  }
+  .board,
+  .btns {
+    width: 320px;
+  }
+  .btn {
+    padding: 0.6rem 0;
+    font-size: 0.85rem;
+  }
+}
+
+/* --------- 375px (Mobile M) --------- */
+@media (max-width: 375px) {
+  .board,
+  .btns {
+    width: 300px;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+  .score {
+    font-size: 0.6rem;
+  }
+  .level-select select,
+  .level-select option {
+    font-size: 0.6rem;
+  }
+}
+
+/* --------- 320px (Mobile S) --------- */
+@media (max-width: 320px) {
+  .board,
+  .btns {
+    width: 270px;
+  }
+  .ctrl-btn {
+    padding: 0.4rem 0.9rem;
+  }
+  .middle {
+    gap: 1rem;
+  }
+  .btn {
+    font-size: 0.75rem;
+  }
+}
