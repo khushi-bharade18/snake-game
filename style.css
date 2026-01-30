@@ -30,10 +30,11 @@ body {
   gap: 1rem;
 }
 .header {
-  width: 100%;
+  /* width: 500px; */
   display: flex;
   align-items: center;
   gap: 2rem;
+  /* position: relative; */
 }
 .level-select {
   display: flex;
@@ -87,8 +88,8 @@ h1 {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 2px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 2px, transparent 1px);
   background-size: calc(100% / 20) calc(100% / 20);
   pointer-events: none;
 }
@@ -156,8 +157,8 @@ h1 {
   text-align: center;
 }
 .ctrl-btn {
-  padding: 0.5rem 1.3rem;
-  font-size: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: var(--neon-green);
   background: transparent;
@@ -172,7 +173,7 @@ h1 {
 .middle {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 @media (max-width: 768px) {
@@ -198,6 +199,15 @@ h1 {
 
 /* --------- 425px (Mobile L) --------- */
 @media (max-width: 425px) {
+  .header {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .side-options {
+    position: absolute;
+    right: 0;
+    top: 0;    
+  }
   h1 {
     font-size: 1.5rem;
   }
@@ -224,6 +234,9 @@ h1 {
   .btns {
     width: 300px;
   }
+  .side-options{
+    top: 10px;
+  }
   h1 {
     font-size: 1.3rem;
   }
@@ -243,10 +256,7 @@ h1 {
     width: 270px;
   }
   .ctrl-btn {
-    padding: 0.4rem 0.9rem;
-  }
-  .middle {
-    gap: 1rem;
+    padding: 0.4rem 1.2rem;
   }
   .btn {
     font-size: 0.75rem;
